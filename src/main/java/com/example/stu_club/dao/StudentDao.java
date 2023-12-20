@@ -10,6 +10,7 @@ public interface StudentDao {
     List<Student> findAll();
     void save(Student student);
     void update(Student student);
+    void updatePassword(String studentId, String newPassword);
     void delete(String id);
 }
 

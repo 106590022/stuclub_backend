@@ -24,11 +24,19 @@ public class StudentController {
         String id = student.getId();
         String password = student.getStupassword();
 
-        // 在这里进行身份验证逻辑
-        // 可以使用 Spring Security 或其他身份验证方式
+        Student studentFromService = StudentService.getStudentById(id);
 
         // 假设验证成功，返回成功消息
-        return "Login successful for ID: " + id;
+        if (studentFromService != null && studentFromService.getStupassword().equals(password)) {
+            return "Login successful for ID: " + id;
+        } else {
+            return "Login failed for ID: " + id;
+        }
+    }
+    @PostMapping("/updatePassword")
+    public  String update(@RequestBody Student student){
+        studentService.updateStudentPassword(student.getId(), student.getStupassword());
+        return "update successful";
     }
 
 

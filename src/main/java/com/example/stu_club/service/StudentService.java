@@ -4,20 +4,20 @@ import com.example.stu_club.dao.StudentDao;
 import com.example.stu_club.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 public class StudentService {
-
-    private final StudentDao studentDao;
+    private static StudentDao studentDao = null;
 
     @Autowired
     public StudentService(StudentDao studentDao) {
         this.studentDao = studentDao;
     }
 
-    public Student getStudentById(String id) {
+    public static Student getStudentById(String id) {
         return studentDao.findById(id);
     }
 
@@ -29,8 +29,9 @@ public class StudentService {
         studentDao.save(student);
     }
 
-    public void updateStudent(Student student) {
-        studentDao.update(student);
+    @Transactional
+    public void updateStudentPassword(String studentId, String newPassword) {
+        studentDao.updatePassword(studentId, newPassword);
     }
 
     public void deleteStudent(String id) {

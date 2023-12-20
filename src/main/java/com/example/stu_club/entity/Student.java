@@ -1,6 +1,7 @@
 package com.example.stu_club.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 
 @Entity
 @Table(name = "stu_basis")
@@ -10,18 +11,18 @@ public class Student {
     private String id;
     private String stu_name;
     private int stu_num;
-    private String stupassword;
+    private String stu_password;
     private String email;
 
     public Student() {
         // 默认构造函数
     }
 
-    public Student(String id, String stu_name, int stu_num, String stupassword, String email) {
+    public Student(String id, String stu_name, int stu_num, String stu_password, String email) {
         this.id = id;
         this.stu_name = stu_name;
         this.stu_num = stu_num;
-        this.stupassword = stupassword;
+        this.stu_password = stu_password;
         this.email = email;
     }
 
@@ -50,11 +51,11 @@ public class Student {
     }
 
     public String getStupassword() {
-        return stupassword;
+        return stu_password;
     }
 
-    public void setStupassword(String stupassword) {
-        this.stupassword = stupassword;
+    public void setStu_password(String stu_password) {
+        this.stu_password = stu_password;
     }
 
     public String getEmail() {
